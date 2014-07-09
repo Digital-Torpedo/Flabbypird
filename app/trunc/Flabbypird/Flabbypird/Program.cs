@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Flabbypird
 {
-    static class Program
+    static class Start
     {
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
@@ -16,7 +16,7 @@ namespace Flabbypird
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainMenuForm());
         }
     }
 }
