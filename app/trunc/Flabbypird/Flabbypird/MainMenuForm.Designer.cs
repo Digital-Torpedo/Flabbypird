@@ -41,7 +41,7 @@
             this.ChangeUserButton.Location = new System.Drawing.Point(266, 242);
             this.ChangeUserButton.Name = "ChangeUserButton";
             this.ChangeUserButton.Size = new System.Drawing.Size(144, 23);
-            this.ChangeUserButton.TabIndex = 0;
+            this.ChangeUserButton.TabIndex = 2;
             this.ChangeUserButton.Text = "button1";
             this.ChangeUserButton.UseVisualStyleBackColor = true;
             // 
@@ -59,7 +59,7 @@
             this.HelpButton.Location = new System.Drawing.Point(266, 329);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(144, 23);
-            this.HelpButton.TabIndex = 3;
+            this.HelpButton.TabIndex = 5;
             this.HelpButton.Text = "button4";
             this.HelpButton.UseVisualStyleBackColor = true;
             // 
@@ -68,7 +68,7 @@
             this.ImpressumButtom.Location = new System.Drawing.Point(266, 271);
             this.ImpressumButtom.Name = "ImpressumButtom";
             this.ImpressumButtom.Size = new System.Drawing.Size(144, 23);
-            this.ImpressumButtom.TabIndex = 4;
+            this.ImpressumButtom.TabIndex = 3;
             this.ImpressumButtom.Text = "button1";
             this.ImpressumButtom.UseVisualStyleBackColor = true;
             // 
@@ -77,7 +77,7 @@
             this.CloseButton.Location = new System.Drawing.Point(266, 300);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(144, 23);
-            this.CloseButton.TabIndex = 5;
+            this.CloseButton.TabIndex = 4;
             this.CloseButton.Text = "button1";
             this.CloseButton.UseVisualStyleBackColor = true;
             // 
@@ -86,7 +86,7 @@
             this.GameButton.Location = new System.Drawing.Point(266, 184);
             this.GameButton.Name = "GameButton";
             this.GameButton.Size = new System.Drawing.Size(144, 23);
-            this.GameButton.TabIndex = 6;
+            this.GameButton.TabIndex = 0;
             this.GameButton.Text = "button1";
             this.GameButton.UseVisualStyleBackColor = true;
             // 
