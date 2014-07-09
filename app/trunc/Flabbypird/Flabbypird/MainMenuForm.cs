@@ -88,19 +88,19 @@ namespace Flabbypird
 
         void ImpressumButtom_Click(object sender, EventArgs e)
         {
-            //this.Hide();
+            this.Hide();
 
-            //System.Threading.Thread changeLevelThread = new System.Threading.Thread(
-            //    new System.Threading.ThreadStart(
-            //        () => Application.Run(new /* Form Klasse eintragen */)
-            //            ));
+            System.Threading.Thread changeLevelThread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                    () => Application.Run(new ImpressumForm(this.Location))
+                        ));
 
-            //changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
+            changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
 
-            //changeLevelThread.Start();
-            //changeLevelThread.Join();
+            changeLevelThread.Start();
+            changeLevelThread.Join();
 
-            //this.Show();
+            this.Show();
         }
 
         void HighScoreButton_Click(object sender, EventArgs e)
