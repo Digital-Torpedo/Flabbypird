@@ -8,4 +8,3 @@ C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.exe
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.pdb
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.MainMenuForm.resources
-C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.ChangeLevelForm.resources

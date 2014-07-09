@@ -26,9 +26,6 @@ namespace Flabbypird
 
             this.Text = "Flabbypird : Hauptmenü";
 
-            /* ChangeLevel */
-            ChangeLevelButton.Text = "Level auswählen";
-            ChangeLevelButton.Click += ChangeLevelButton_Click;
 
             /* ChangeUser */
             ChangeUserButton.Text = "Benutzer auswählen";
@@ -51,11 +48,11 @@ namespace Flabbypird
             HelpButton.Click += HelpButton_Click;
 
             /* Continue Game Button */
-            ContinueGameButton.Text = "Spiel fortsetzen";
-            ContinueGameButton.Click += ContinueGameButton_Click;
+            GameButton.Text = "Spielen";
+            GameButton.Click += GameButton_Click;
         }
 
-        void ContinueGameButton_Click(object sender, EventArgs e)
+        void GameButton_Click(object sender, EventArgs e)
         {
             //this.Hide();
 
@@ -138,23 +135,6 @@ namespace Flabbypird
             //changeLevelThread.Join();
 
             //this.Show();
-        }
-
-        void ChangeLevelButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            System.Threading.Thread changeLevelThread = new System.Threading.Thread(
-                new System.Threading.ThreadStart(
-                    () => Application.Run(new ChangeLevelForm(this.DesktopLocation))
-                        ));
-
-            changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
-
-            changeLevelThread.Start();
-            changeLevelThread.Join();
-
-            this.Show();
         }
 
         /// <summary>
