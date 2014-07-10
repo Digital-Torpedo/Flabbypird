@@ -68,7 +68,7 @@ namespace Flabbypird
         /// <param name="parentattribute">Main attribute you want to edit. Example: "Volume"</param>
         /// <param name="attribute">Attribute you want to change from main attribute. Example: "Value"</param>
         /// <param name="value">Value you want to set to the attribute. Example: "75"</param>
-        public static void test(string parentattribute, string attribute, string value)
+        public static void Write(string parentattribute, string attribute, string value)
         {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(Path.Combine(path, "config.xml"));
