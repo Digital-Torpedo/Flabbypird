@@ -11,6 +11,10 @@ namespace Flabbypird
 {
     public partial class ImpressumForm : Form
     {
+        /// <summary>
+        /// Initialisierungsmethode.
+        /// </summary>
+        /// <param name="location">Argument welche Position das Vaterfenster hat.</param>
         public ImpressumForm(Point location)
         {
             InitializeComponent();
@@ -30,6 +34,11 @@ namespace Flabbypird
                 "Theodor Gaede TheodorG@outlook.com";
         }
 
+        /// <summary>
+        /// Event welches das Fenster schließt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();

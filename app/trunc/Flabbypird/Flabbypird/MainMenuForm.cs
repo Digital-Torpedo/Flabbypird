@@ -12,6 +12,9 @@ namespace Flabbypird
 {
     public partial class MainMenuForm : Form
     {
+        /// <summary>
+        /// Initialisierungsmethode
+        /// </summary>
         public MainMenuForm()
         {
             InitializeComponent();
@@ -25,11 +28,6 @@ namespace Flabbypird
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
 
             this.Text = "Flabbypird : Hauptmenü";
-
-
-            /* ChangeUser */
-            ChangeUserButton.Text = "Benutzer auswählen";
-            ChangeUserButton.Click += ChangeUserButton_Click;
 
             /* HighScore */
             HighScoreButton.Text = "Bestenliste";
@@ -52,6 +50,11 @@ namespace Flabbypird
             GameButton.Click += GameButton_Click;
         }
 
+        /// <summary>
+        /// Event das ausgeführt wird, wenn der "Spiel Starten" Button gedrückt wird.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void GameButton_Click(object sender, EventArgs e)
         {
             //this.Hide();
@@ -69,6 +72,11 @@ namespace Flabbypird
             //this.Show();
         }
 
+        /// <summary>
+        /// Event das ausgeführt wird, wenn der "Hilfe" Button gedrückt wird.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void HelpButton_Click(object sender, EventArgs e)
         {
             //this.Hide();
@@ -86,6 +94,11 @@ namespace Flabbypird
             //this.Show();
         }
 
+        /// <summary>
+        /// Event das ausgeführt wird, wenn der "Impressum" Button gedrückt wird.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void ImpressumButtom_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -103,24 +116,12 @@ namespace Flabbypird
             this.Show();
         }
 
+        /// <summary>
+        /// Event das ausgeführt wird, wenn der "Bestenliste" Button gedrückt wird.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void HighScoreButton_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-
-            //System.Threading.Thread changeLevelThread = new System.Threading.Thread(
-            //    new System.Threading.ThreadStart(
-            //        () => Application.Run(new /* Form Klasse eintragen */)
-            //            ));
-
-            //changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
-
-            //changeLevelThread.Start();
-            //changeLevelThread.Join();
-
-            //this.Show();
-        }
-
-        void ChangeUserButton_Click(object sender, EventArgs e)
         {
             //this.Hide();
 

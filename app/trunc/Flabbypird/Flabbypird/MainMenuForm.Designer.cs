@@ -28,22 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ChangeUserButton = new System.Windows.Forms.Button();
             this.HighScoreButton = new System.Windows.Forms.Button();
             this.HelpButton = new System.Windows.Forms.Button();
             this.ImpressumButtom = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.GameButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // ChangeUserButton
-            // 
-            this.ChangeUserButton.Location = new System.Drawing.Point(266, 242);
-            this.ChangeUserButton.Name = "ChangeUserButton";
-            this.ChangeUserButton.Size = new System.Drawing.Size(144, 23);
-            this.ChangeUserButton.TabIndex = 2;
-            this.ChangeUserButton.Text = "button1";
-            this.ChangeUserButton.UseVisualStyleBackColor = true;
             // 
             // HighScoreButton
             // 
@@ -56,7 +46,7 @@
             // 
             // HelpButton
             // 
-            this.HelpButton.Location = new System.Drawing.Point(266, 329);
+            this.HelpButton.Location = new System.Drawing.Point(266, 300);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(144, 23);
             this.HelpButton.TabIndex = 5;
@@ -65,7 +55,7 @@
             // 
             // ImpressumButtom
             // 
-            this.ImpressumButtom.Location = new System.Drawing.Point(266, 271);
+            this.ImpressumButtom.Location = new System.Drawing.Point(266, 242);
             this.ImpressumButtom.Name = "ImpressumButtom";
             this.ImpressumButtom.Size = new System.Drawing.Size(144, 23);
             this.ImpressumButtom.TabIndex = 3;
@@ -74,7 +64,7 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(266, 300);
+            this.CloseButton.Location = new System.Drawing.Point(266, 271);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(144, 23);
             this.CloseButton.TabIndex = 4;
@@ -100,7 +90,6 @@
             this.Controls.Add(this.ImpressumButtom);
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.HighScoreButton);
-            this.Controls.Add(this.ChangeUserButton);
             this.Name = "MainMenuForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -109,7 +98,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button ChangeUserButton;
         private System.Windows.Forms.Button HighScoreButton;
         private System.Windows.Forms.Button HelpButton;
         private System.Windows.Forms.Button ImpressumButtom;
