@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Hilfe
+namespace Flabbypird
 {
     public partial class Hilfe : Form
     {
