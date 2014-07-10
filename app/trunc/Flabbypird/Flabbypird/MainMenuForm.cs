@@ -19,6 +19,10 @@ namespace Flabbypird
         {
             InitializeComponent();
 
+            trackBar1.Value = Convert.ToInt32(Settings.I.Volume * 100);
+
+            volumeLabel.Text = Convert.ToString(trackBar1.Value);
+
             this.Size = new Size()
             {
                 Width = 800,
@@ -28,6 +32,8 @@ namespace Flabbypird
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
 
             this.Text = "Flabbypird : Hauptmenü";
+
+            
 
             /* HighScore */
             HighScoreButton.Text = "Bestenliste";
@@ -48,8 +54,9 @@ namespace Flabbypird
             /* Continue Game Button */
             GameButton.Text = "Spielen";
             GameButton.Click += GameButton_Click;
-        }
 
+        }
+            
         /// <summary>
         /// Event das ausgeführt wird, wenn der "Spiel Starten" Button gedrückt wird.
         /// </summary>
@@ -146,6 +153,46 @@ namespace Flabbypird
         void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// Event, das ausgeführt wird, wenn sich der Wert des Lautstärkereglers änder. Dieser wird direkt in einem Label angezeigt
+        /// </summary>
+        /// <param name="sender">Objekt der TrackBar</param>
+        /// <param name="e">Eventargumente</param>
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            volumeLabel.Text = Convert.ToString(trackBar1.Value);
+        }
+
+        /// <summary>
+        /// Event, das ausgeführt wird, wenn sich der Zustand der Checkbox ändert. Wird diese aktiviert, wird der Lautstärkeregler deaktiviert. Und Umgekehrt.
+        /// </summary>
+        /// <param name="sender">Objekt der Checkbox</param>
+        /// <param name="e">Eventargumente</param>
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            switch (checkBox1.Checked)
+            {
+                case true:
+                    trackBar1.Enabled = false;
+                    Settings.I.VolumeEnabled = false;
+                    break;
+                case false:
+                    trackBar1.Enabled = true;
+                    Settings.I.VolumeEnabled = true;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Event, das ausgeführt wird, wenn der Lautstärkeregler losgelassen wird.
+        /// </summary>
+        /// <param name="sender">Objekt der TrackBar</param>
+        /// <param name="e">Eventargumente</param>
+        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            Settings.I.Volume = Convert.ToDouble(trackBar1.Value) / 100;
         }
     }
 }

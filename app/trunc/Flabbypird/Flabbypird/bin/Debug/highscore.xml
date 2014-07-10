@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ArrayOfPlayer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<ArrayOfPlayer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Player>
     <Name>Theodor</Name>
     <Score>100</Score>
