@@ -27,9 +27,9 @@ namespace Flabbypird
             this.Size = new Size() { Width = 800, Height = 600 };
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
 
-            Impressum.Text = "Digital-Torpedo " + Environment.NewLine + 
+            Impressum.Text = "Digital-Torpedo" + Environment.NewLine + 
                 "Ekhard Seer e.seer@web.de" + Environment.NewLine + 
-                "Jakob Warmhold ***keine angaben***" + Environment.NewLine +
+                "Jakob Warmhold jakob@warmhold.de" + Environment.NewLine +
                 "Felix Martin f.martin.1995@web.de" + Environment.NewLine + 
                 "Theodor Gaede TheodorG@outlook.com";
         }
