@@ -433,6 +433,8 @@ namespace Flabbypird
             /// </summary>
             public Game() : base(Convert.ToInt16(Settings.I.ScreenWidth), Convert.ToInt16(Settings.I.ScreenHeight))
             {
+                Title = "Flabbypird";
+
                 Load += game_Load;
                 Resize += game_Resize;
                 UpdateFrame += game_UpdateFrame;
