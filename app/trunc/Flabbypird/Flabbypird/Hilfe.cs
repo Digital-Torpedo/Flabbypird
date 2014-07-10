@@ -27,8 +27,8 @@ namespace Flabbypird
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
             this.Location = location;
             pictureBox1.Hide();
-            label1.Text = "Das Ziel des Spiels ist es soweit wie möglich"+Environment.NewLine+
-                          "im Level voranzukommen ohne mit der"+Environment.NewLine+
+            label1.Text = "Das Ziel des Spiels ist es soweit wie möglich" + Environment.NewLine +
+                          "im Level voranzukommen ohne mit der" + Environment.NewLine +
                           "Spielumgebung in Kontakt zu kommen";
         }
 
