@@ -1,4 +1,4 @@
-﻿namespace Hilfe
+﻿namespace Flabbypird
 {
     partial class Hilfe
     {
