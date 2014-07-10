@@ -38,8 +38,8 @@ namespace Flabbypird
         /// <summary>
         /// Event welches das Fenster schließt.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender objekt</param>
+        /// <param name="e">event argument</param>
         void button1_Click(object sender, EventArgs e)
         {
             this.Close();
