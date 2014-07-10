@@ -79,19 +79,19 @@ namespace Flabbypird
         /// <param name="e">Eventargumente</param>
         void HelpButton_Click(object sender, EventArgs e)
         {
-            //this.Hide();
+            this.Hide();
 
-            //System.Threading.Thread changeLevelThread = new System.Threading.Thread(
-            //    new System.Threading.ThreadStart(
-            //        () => Application.Run(new /* Form Klasse eintragen */)
-            //            ));
+            System.Threading.Thread changeLevelThread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                    () => Application.Run(new Hilfe(this.Location))
+                        ));
 
-            //changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
+            changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
 
-            //changeLevelThread.Start();
-            //changeLevelThread.Join();
+            changeLevelThread.Start();
+            changeLevelThread.Join();
 
-            //this.Show();
+            this.Show();
         }
 
         /// <summary>
