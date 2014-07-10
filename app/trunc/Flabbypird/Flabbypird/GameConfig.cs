@@ -36,10 +36,10 @@ namespace Flabbypird
                 GameConfig.Generate();
 
             Hashtable ht = GameConfig.Read();
-            Volume = (double)ht["volumeValue"];
-            VolumeEnabled = (bool)ht["volumeEnabled"];
-            ScreenWidth = (double)ht["resolutionWidth"];
-            ScreenHeight = (double)ht["resolutionHeight"];
+            Volume = Convert.ToDouble(ht["volumeValue"]);
+            VolumeEnabled = Convert.ToBoolean(ht["volumeEnabled"]);
+            ScreenWidth = Convert.ToDouble(ht["resolutionWidth"]);
+            ScreenHeight = Convert.ToDouble(ht["resolutionHeight"]);
         }
 
         ~Settings()

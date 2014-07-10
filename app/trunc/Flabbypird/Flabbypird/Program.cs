@@ -18,10 +18,15 @@ namespace Flabbypird
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainMenuForm());
         }
-        static void Main()
+        static void Main__()
         {
             Highscore.I.Add("Theodor", 100);
             Highscore.I.Add("Jakob", 200);
+        }
+
+        static void Main()
+        {
+            new _Flabbypird.Game();
         }
     }
 }
