@@ -14,7 +14,7 @@ namespace Flabbypird
     {
         static Settings INSTANCE;
 
-        static Settings I
+        public static Settings I
         {
             get
             {
@@ -26,9 +26,9 @@ namespace Flabbypird
         }
 
         internal bool VolumeEnabled;
-        internal int Volume;
-        internal int ScreenWidth;
-        internal int ScreenHeight;
+        internal double Volume;
+        internal double ScreenWidth;
+        internal double ScreenHeight;
 
         public Settings()
         {
@@ -36,10 +36,10 @@ namespace Flabbypird
                 GameConfig.Generate();
 
             Hashtable ht = GameConfig.Read();
-            Volume = (int)ht["volumeValue"];
+            Volume = (double)ht["volumeValue"];
             VolumeEnabled = (bool)ht["volumeEnabled"];
-            ScreenWidth = (int)ht["resolutionWidth"];
-            ScreenHeight = (int)ht["resolutionHeight"];
+            ScreenWidth = (double)ht["resolutionWidth"];
+            ScreenHeight = (double)ht["resolutionHeight"];
         }
 
         ~Settings()

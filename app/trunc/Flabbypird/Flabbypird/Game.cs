@@ -99,7 +99,7 @@ namespace Flabbypird
                 GL.PushMatrix();
                 GL.LoadIdentity();
 
-                GL.Ortho(0, screenWidth, screenHeight, 0, -1, 1);
+                GL.Ortho(0, Settings.I.ScreenWidth, Settings.I.ScreenHeight, 0, -1, 1);
 
                 GL.MatrixMode(MatrixMode.Modelview);
                 GL.PushMatrix();
