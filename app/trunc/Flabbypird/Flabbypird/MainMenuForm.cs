@@ -53,8 +53,8 @@ namespace Flabbypird
         /// <summary>
         /// Event das ausgeführt wird, wenn der "Spiel Starten" Button gedrückt wird.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objekt des Buttons</param>
+        /// <param name="e">Eventargumente</param>
         void GameButton_Click(object sender, EventArgs e)
         {
             //this.Hide();
@@ -75,8 +75,8 @@ namespace Flabbypird
         /// <summary>
         /// Event das ausgeführt wird, wenn der "Hilfe" Button gedrückt wird.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objekt des Buttons</param>
+        /// <param name="e">Eventargumente</param>
         void HelpButton_Click(object sender, EventArgs e)
         {
             //this.Hide();
@@ -97,8 +97,8 @@ namespace Flabbypird
         /// <summary>
         /// Event das ausgeführt wird, wenn der "Impressum" Button gedrückt wird.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objekt des Buttons</param>
+        /// <param name="e">Eventargumente</param>
         void ImpressumButtom_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -119,8 +119,8 @@ namespace Flabbypird
         /// <summary>
         /// Event das ausgeführt wird, wenn der "Bestenliste" Button gedrückt wird.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objekt des Buttons</param>
+        /// <param name="e">Eventargumente</param>
         void HighScoreButton_Click(object sender, EventArgs e)
         {
             //this.Hide();
@@ -141,8 +141,8 @@ namespace Flabbypird
         /// <summary>
         /// Event für den Schließen Button beim klicken.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objekt des Buttons</param>
+        /// <param name="e">Eventargumente</param>
         void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
