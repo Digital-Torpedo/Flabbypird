@@ -51,7 +51,7 @@
             this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
             this.logo.Location = new System.Drawing.Point(59, 336);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(172, 170);
+            this.logo.Size = new System.Drawing.Size(172, 168);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logo.TabIndex = 1;
             this.logo.TabStop = false;
