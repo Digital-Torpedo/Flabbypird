@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="Highscore.cs" />
     <Compile Include="ImpressumForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -12,11 +12,16 @@ namespace Flabbypird
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main_()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainMenuForm());
+        }
+        static void Main()
+        {
+            Highscore.I.Add("Theodor", 100);
+            Highscore.I.Add("Jakob", 200);
         }
     }
 }
