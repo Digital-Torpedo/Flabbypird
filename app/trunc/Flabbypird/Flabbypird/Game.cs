@@ -111,7 +111,7 @@ namespace Flabbypird
 
             public static void Line(float x1, float y1, float x2, float y2)
             {
-                GL.Begin(BeginMode.Lines);
+                GL.Begin(PrimitiveType.Lines);
                 GL.Vertex2(x1, y1);
                 GL.Vertex2(x2, y2);
                 GL.End();
@@ -120,6 +120,7 @@ namespace Flabbypird
 
         public class Game : GameWindow
         {
+            #region Barriere
             class Barriers
             {
                 class Barrier
@@ -164,6 +165,7 @@ namespace Flabbypird
 
                 public Barriers()
                 {
+                    _Barriers = new List<Barrier>();
                     Add(Convert.ToInt16(Settings.I.ScreenWidth) / BarrierDistance);
                 }
 
@@ -190,11 +192,13 @@ namespace Flabbypird
 
                 void Add(int count)
                 {
-                    for (int b = 0; b < count; b++)
+                    for (int b = 1; b < count; b++)
                         _Barriers.Add(new Barrier(BarrierDistance * b));
                 }
             }
+            #endregion
 
+            #region Player
             public class Player
             {
                 static int X = Convert.ToInt16(Settings.I.ScreenWidth / 3);
@@ -211,25 +215,27 @@ namespace Flabbypird
                     D.Y += moveY;
                 }
 
-                const double GravitationUp = 25;
-                const double GravitationDown = 10;
+                const double GravitationUp = 240.0 / 60;
+                const double GravitationDown = 4.0 / 60;
                 double FallSpeed = 0.0;
 
-                internal void Update(bool Pressed)
+                internal void Update()
                 {
-                    FallSpeed += GravitationDown;
-
-                    if (Pressed)
-                        FallSpeed -= GravitationDown;
-
                     Move(Convert.ToInt16(FallSpeed));
-                } 
+                    FallSpeed += GravitationDown;
+                }
+
+                internal void Jump()
+                {
+                    FallSpeed = -GravitationUp;
+                }
 
                 internal void Draw()
                 {
                     _Flabbypird.Draw.Image(ImageStore.Flabbypird, 3, X, A.Y);
                 }
             }
+            #endregion
 
             Player _Player;
             Barriers _Barriers;
@@ -242,33 +248,64 @@ namespace Flabbypird
                 UpdateFrame += game_UpdateFrame;
                 RenderFrame += game_RenderFrame;
 
+                Keyboard.KeyDown += Keyboard_KeyDown;
+                Keyboard.KeyUp += Keyboard_KeyUp;
+
                 Run(60.0, 60.0);
+            }
+
+            bool SpaceLock = false;
+            void Keyboard_KeyDown(object sender, KeyboardKeyEventArgs e)
+            {
+                if (!SpaceLock && e.Key == Key.Space)
+                    _Player.Jump();
+
+                SpaceLock = true;
+            }
+
+            /// <summary>
+            /// Event welches eintritt, wenn eine Taste losgelassen wurde.
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            void Keyboard_KeyUp(object sender, KeyboardKeyEventArgs e)
+            {
+                if (e.Key == Key.Space)
+                    SpaceLock = false;
             }
 
             void game_RenderFrame(object sender, FrameEventArgs e)
             {
+                GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+                GL.MatrixMode(MatrixMode.Modelview);
+                GL.LoadIdentity();
+
                 _Barriers.Draw();
                 _Player.Draw();
+
+                SwapBuffers();
             }
 
             void game_UpdateFrame(object sender, FrameEventArgs e)
             {
                 if (GameStarted)
-                    if (_Barriers.AnyCollision(_Player.A, _Player.B, _Player.C, _Player.D))
-                        this.Close();
+                    if (_Barriers.AnyCollision(_Player.A, _Player.B, _Player.C, _Player.D)&&false) { }
+                        //this.Close();
                     else
-                    {
-                        _Player.Update(Keyboard[Key.Space]);
-                    }
+                        _Player.Update();
+                else
+                    GameStarted = Keyboard[Key.Space];
             }
             
             void game_Resize(object sender, EventArgs e)
             {
-
+                GL.Viewport(0, 0, Width, Height);
             }
 
             void game_Load(object sender, EventArgs e)
             {
+                GL.LineWidth(4f);
+                VSync = VSyncMode.On;
                 _Player = new Player();
                 _Barriers = new Barriers();
             }
