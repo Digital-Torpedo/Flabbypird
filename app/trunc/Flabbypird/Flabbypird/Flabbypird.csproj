@@ -48,14 +48,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddHighScoreFailedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddHighScoreFailedForm.Designer.cs">
+      <DependentUpon>AddHighScoreFailedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddHighScoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddHighScoreForm.Designer.cs">
+      <DependentUpon>AddHighScoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HighscoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HighscoreForm.designer.cs">
+      <DependentUpon>HighscoreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="GameConfig.cs" />
     <Compile Include="Highscore.cs" />
-    <Compile Include="Hilfe.cs">
+    <Compile Include="HelpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Hilfe.Designer.cs">
-      <DependentUpon>Hilfe.cs</DependentUpon>
+    <Compile Include="HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ImpressumForm.cs">
       <SubType>Form</SubType>
@@ -71,8 +89,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Hilfe.resx">
-      <DependentUpon>Hilfe.cs</DependentUpon>
+    <EmbeddedResource Include="AddHighScoreFailedForm.resx">
+      <DependentUpon>AddHighScoreFailedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddHighScoreForm.resx">
+      <DependentUpon>AddHighScoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HighscoreForm.resx">
+      <DependentUpon>HighscoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImpressumForm.resx">
       <DependentUpon>ImpressumForm.cs</DependentUpon>

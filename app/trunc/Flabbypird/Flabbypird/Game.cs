@@ -293,6 +293,9 @@ namespace Flabbypird
                     _Barriers.RemoveRange(0, 3); 
                 }
 
+                // Punkte
+                internal int Points = 0;
+
                 // Liste der Barrieren
                 List<Barrier> _Barriers;
 
@@ -317,8 +320,16 @@ namespace Flabbypird
                 /// </summary>
                 internal void Update()
                 {
-                    _Barriers.RemoveAll(x => x.Move(2));
+                    _Barriers.RemoveAll(x => AddPoint(x.Move(2)));
                     Add();
+                }
+
+                bool AddPoint(bool delete)
+                {
+                    if (delete)
+                        Points++;
+
+                    return delete;
                 }
 
                 /// <summary>
@@ -426,6 +437,7 @@ namespace Flabbypird
             Player _Player;
             Barriers _Barriers;
             Background _Background;
+
             bool GameStarted = false;
 
             /// <summary>
@@ -511,8 +523,18 @@ namespace Flabbypird
             void game_UpdateFrame(object sender, FrameEventArgs e)
             {
                 if (GameStarted)
-                    if (_Barriers.AnyCollision(_Player.A, _Player.B, _Player.C, _Player.D)) 
+                    if (_Barriers.AnyCollision(_Player.A, _Player.B, _Player.C, _Player.D))
+                    {
                         this.Close();
+                        if (Highscore.I.MinScore() < _Barriers.Points)
+                            System.Windows.Forms.Application.Run(
+                                new AddHighScoreForm(_Barriers.Points)
+                                );
+                        else
+                            System.Windows.Forms.Application.Run(
+                                new AddHighScoreFailedForm()
+                                );
+                    }                    
                     else
                     {
                         _Player.Update();

@@ -33,8 +33,6 @@ namespace Flabbypird
 
             this.Text = "Flabbypird : Hauptmenü";
 
-            
-
             /* HighScore */
             HighScoreButton.Text = "Bestenliste";
             HighScoreButton.Click += HighScoreButton_Click;
@@ -64,19 +62,19 @@ namespace Flabbypird
         /// <param name="e">Eventargumente</param>
         void GameButton_Click(object sender, EventArgs e)
         {
-            //this.Hide();
+            this.Hide();
 
-            //System.Threading.Thread changeLevelThread = new System.Threading.Thread(
-            //    new System.Threading.ThreadStart(
-            //        () => Application.Run(new /* Form Klasse eintragen */)
-            //            ));
+            System.Threading.Thread changeLevelThread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                    () => new _Flabbypird.Game()
+                        ));
 
-            //changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
+            changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
 
-            //changeLevelThread.Start();
-            //changeLevelThread.Join();
+            changeLevelThread.Start();
+            changeLevelThread.Join();
 
-            //this.Show();
+            this.Show();
         }
 
         /// <summary>
@@ -90,7 +88,7 @@ namespace Flabbypird
 
             System.Threading.Thread changeLevelThread = new System.Threading.Thread(
                 new System.Threading.ThreadStart(
-                    () => Application.Run(new Hilfe(this.Location))
+                    () => Application.Run(new HelpForm(this.Location))
                         ));
 
             changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
@@ -130,19 +128,19 @@ namespace Flabbypird
         /// <param name="e">Eventargumente</param>
         void HighScoreButton_Click(object sender, EventArgs e)
         {
-            //this.Hide();
+            this.Hide();
 
-            //System.Threading.Thread changeLevelThread = new System.Threading.Thread(
-            //    new System.Threading.ThreadStart(
-            //        () => Application.Run(new /* Form Klasse eintragen */)
-            //            ));
+            System.Threading.Thread changeLevelThread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                    () => Application.Run(new HighscoreForm(this.Location))
+                        ));
 
-            //changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
+            changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);
 
-            //changeLevelThread.Start();
-            //changeLevelThread.Join();
+            changeLevelThread.Start();
+            changeLevelThread.Join();
 
-            //this.Show();
+            this.Show();
         }
 
         /// <summary>

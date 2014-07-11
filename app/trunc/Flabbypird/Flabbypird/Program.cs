@@ -12,21 +12,11 @@ namespace Flabbypird
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
         [STAThread]
-        static void Main_()
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainMenuForm());
-        }
-        static void Main__()
-        {
-            Highscore.I.Add("Theodor", 100);
-            Highscore.I.Add("Jakob", 200);
-        }
-
-        static void Main()
-        {
-            new _Flabbypird.Game();
         }
     }
 }

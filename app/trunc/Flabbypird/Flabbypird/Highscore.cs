@@ -51,6 +51,13 @@ namespace Flabbypird
             FileStream.Close();
         }
 
+        public int MinScore()
+        {
+            return PlayerScore.Count > 0 ?
+                PlayerScore.Last().Score :
+                0;
+        }
+
         public void Add(string playerName, int score)
         {
             PlayerScore.Add(new Player() { Name = playerName, Score = score });
