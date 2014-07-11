@@ -85,16 +85,16 @@ namespace Flabbypird
             /// <summary>
             /// Zeichnen einer Textur mit einer Manuellen Skalierung. X und Y Koordinaten im Uhrzeigersinn.
             /// </summary>
-            /// <param name="ID"></param>
-            /// <param name="positionZ"></param>
-            /// <param name="x1"></param>
-            /// <param name="y1"></param>
-            /// <param name="x2"></param>
-            /// <param name="y2"></param>
-            /// <param name="x3"></param>
-            /// <param name="y3"></param>
-            /// <param name="x4"></param>
-            /// <param name="y4"></param>
+            /// <param name="ID">ImageStore.Image.ID</param>
+            /// <param name="positionZ">Z Position</param>
+            /// <param name="x1">Oben Links</param>
+            /// <param name="y1">Oben Links</param>
+            /// <param name="x2">Oben Rechts</param>
+            /// <param name="y2">Oben Rechts</param>
+            /// <param name="x3">Unten Rechts</param>
+            /// <param name="y3">Unten Rechts</param>
+            /// <param name="x4">Unten Links</param>
+            /// <param name="y4">Unten Links</param>
             public static void Texture(int ID, int positionZ, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4)
             {
                 GL.MatrixMode(MatrixMode.Projection);
