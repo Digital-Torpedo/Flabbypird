@@ -5,6 +5,31 @@ C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\OpenTK.dll
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\OpenTK.pdb
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\OpenTK.xml
+<<<<<<< HEAD
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\Flabbypird.exe.config
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.exe
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.pdb
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\Flabbypird.exe
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\Flabbypird.pdb
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\mscorlib.dll
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\OpenTK.dll
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\OpenTK.pdb
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\OpenTK.xml
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\de\mscorlib.resources.dll
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\normidna.nlp
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\normnfc.nlp
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\normnfd.nlp
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\normnfkc.nlp
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\bin\Debug\normnfkd.nlp
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.csprojResolveAssemblyReference.cache
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.Hilfe.resources
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.ImpressumForm.resources
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.MainMenuForm.resources
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.Properties.Resources.resources
+C:\Users\warmhold\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.csproj.GenerateResource.Cache
+=======
+C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.Hilfe.resources
+>>>>>>> 5dcd63d7843f5d6841d12e9604384fc43534140b
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.ImpressumForm.resources
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.MainMenuForm.resources
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\_Flabbypird.Properties.Resources.resources
@@ -12,6 +37,7 @@ C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.exe
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.pdb
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.csprojResolveAssemblyReference.cache
+>>>>>>> ac12a97ceca5926ed9df274d01e320555e44071a
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.HighscoreForm.resources
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.HelpForm.resources
 C:\Users\Theodor\Documents\GitHub\Flabbypird\app\trunc\Flabbypird\Flabbypird\obj\Debug\Flabbypird.AddHighScoreFailedForm.resources

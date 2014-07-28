@@ -30,6 +30,12 @@ namespace Flabbypird
         internal double ScreenWidth;
         internal double ScreenHeight;
 
+        static class Screen
+        {
+            static internal int Width = 800;
+            static internal int Height = 600;
+        }
+
         public Settings()
         {
             if (!File.Exists(@".\config.xml"))
@@ -63,7 +69,7 @@ namespace Flabbypird
                 writer.WriteStartDocument();  // start parameter ==> Start Writitng Document
                 writer.WriteStartElement("Settings"); //Define first Element called "Settings"
                 writer.WriteStartElement("Volume"); //Define Child Element called "Volume". Parent: Element named "Settings" 
-                writer.WriteAttributeString("Value", "100"); // add Attribute "Value" to Element named "Volume" and set its value to "100"
+                writer.WriteAttributeString("Value", "1.0"); // add Attribute "Value" to Element named "Volume" and set its value to "100"
                 writer.WriteAttributeString("Enabled", "true");
                 writer.WriteEndElement(); // Close Element named "Volume"
                 writer.WriteStartElement("Resolution");
@@ -118,7 +124,7 @@ namespace Flabbypird
                 XmlNode volume = xmlDoc.SelectSingleNode("//Settings/" + parentattribute);
                 XmlAttribute attributes = volume.Attributes[attribute];
                 attributes.Value = value;
-                xmlDoc.Save(Path.Combine(path, "test.xml"));
+                xmlDoc.Save(@".\config.xml");
             }
         }
     }

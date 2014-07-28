@@ -66,7 +66,7 @@ namespace Flabbypird
 
             System.Threading.Thread changeLevelThread = new System.Threading.Thread(
                 new System.Threading.ThreadStart(
-                    () => new _Flabbypird.Game()
+                    () => new Game.Window()
                         ));
 
             changeLevelThread.SetApartmentState(System.Threading.ApartmentState.STA);

@@ -21,7 +21,7 @@ namespace Flabbypird
 
         void retryButton_Click(object sender, EventArgs e)
         {
-            new _Flabbypird.Game();
+            new Game.Window();
         }
 
         void backButton_Click(object sender, EventArgs e)

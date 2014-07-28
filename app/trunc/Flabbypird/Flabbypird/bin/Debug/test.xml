@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <Settings>
+<<<<<<< HEAD
+  <Volume Value="1.0" Enabled="true" />
+=======
   <Volume Value="0,78" Enabled="True" />
+>>>>>>> ac12a97ceca5926ed9df274d01e320555e44071a
   <Resolution Height="600" Width="800" />
   <Language Value="DE" />
 </Settings>

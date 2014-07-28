@@ -49,7 +49,7 @@ namespace Flabbypird
             if (nameBox.Text != "")
                 Highscore.I.Add(nameBox.Text, Score);
 
-            new _Flabbypird.Game();
+            new Game.Window();
         }
     }
 }
