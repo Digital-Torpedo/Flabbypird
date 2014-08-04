@@ -219,11 +219,16 @@ namespace Game
                 /// <param name="c">Eckpunkt der Spielfigur (x, y)</param>
                 /// <param name="d">Eckpunkt der Spielfigur (x, y)</param>
                 /// <returns></returns>
-                internal bool Collission(Point a, Point b, Point c, Point d)
+                internal bool Collission(int x_l, int x_r, int y_t, int y_b)
                 {
-                    return
-                        (a.Y < A && a.X < _X && b.X > _X) ||
-                        (d.Y > Screen.Height - C && d.X < _X && c.X > _X);
+                    bool v =
+                        (y_t < A && x_l < _X && x_r > _X) ||
+                        (y_b > Screen.Height - C && x_l < _X && x_r > _X);
+
+                    if (v)
+                        Console.WriteLine();
+
+                    return v;
                 }
 
                 /// <summary>
@@ -276,14 +281,14 @@ namespace Game
             /// <summary>
             /// Überprüft ob die Spielfigur mit einer Barriere Kollidiert
             /// </summary>
-            /// <param name="a">Eckpunkt der Spielfigur (x, y)</param>
-            /// <param name="b">Eckpunkt der Spielfigur (x, y)</param>
-            /// <param name="c">Eckpunkt der Spielfigur (x, y)</param>
-            /// <param name="d">Eckpunkt der Spielfigur (x, y)</param>
+            /// <param name="a">x left</param>
+            /// <param name="b">x right</param>
+            /// <param name="c">y top</param>
+            /// <param name="d">y bottom</param>
             /// <returns>Wahrheitswert ob eine Kollission zustande kam</returns>
-            internal bool AnyCollision(Point a, Point b, Point c, Point d)
+            internal bool AnyCollision(int x_l, int x_r, int y_t, int y_b)
             {
-                return _Barriers.Any(barrier => barrier.Collission(a, b, c, d));
+                return _Barriers.Any(barrier => barrier.Collission(x_l, x_r, y_t, y_b));
             }
 
             /// <summary>
@@ -347,21 +352,24 @@ namespace Game
         {
             // X Achse und die Vier Koordinaten im Uhrzeigersinn der Spielfigur (x & y).
             static int X = Convert.ToInt16(Screen.Width / 3.0);
-            public Point A = new Point(X - ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) - ImageStore.Flabbypird.Height / 2);
-            public Point B = new Point(X + ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) - ImageStore.Flabbypird.Height / 2);
-            public Point C = new Point(X + ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) + ImageStore.Flabbypird.Height / 2);
-            public Point D = new Point(X - ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) + ImageStore.Flabbypird.Height / 2);
+            //public Point A = new Point(X - ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) - ImageStore.Flabbypird.Height / 2);
+            //public Point B = new Point(X + ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) - ImageStore.Flabbypird.Height / 2);
+            //public Point C = new Point(X + ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) + ImageStore.Flabbypird.Height / 2);
+            //public Point D = new Point(X - ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) + ImageStore.Flabbypird.Height / 2);
+
+            public int X_L = X - ImageStore.Flabbypird.Width / 2;
+            public int X_R = X + ImageStore.Flabbypird.Width / 2;
+            public int Y_T = Convert.ToInt16(Screen.Height / 2) - ImageStore.Flabbypird.Height / 2;
+            public int Y_B = Convert.ToInt16(Screen.Height / 2) + ImageStore.Flabbypird.Height / 2;
 
             /// <summary>
-            /// Methode welche die vier Y Koordinaten der SPielfigur bewegt.
+            /// Methode welche die vier Y Koordinaten der Spielfigur bewegt.
             /// </summary>
             /// <param name="moveY"></param>
             internal void Move(int moveY)
             {
-                A.Y += moveY;
-                B.Y += moveY;
-                C.Y += moveY;
-                D.Y += moveY;
+                Y_T += moveY;
+                Y_B += moveY;
             }
 
             // Gravitation Hoch wenn man die Leertaste drückt, und automatische Fallgravitation.
@@ -391,7 +399,7 @@ namespace Game
             /// </summary>
             internal void Draw()
             {
-                Game.Draw.Image(ImageStore.Flabbypird, 0, A.X, A.Y);  
+                Game.Draw.Image(ImageStore.Flabbypird, 0, X_L, Y_T);  
             }
         }
         #endregion
@@ -418,6 +426,8 @@ namespace Game
             }
         }
         #endregion
+
+        #region Game
 
         Player _Player;
         Barriers _Barriers;
@@ -488,6 +498,30 @@ namespace Game
         }
 
         /// <summary>
+        /// Methode welche ausgeführt wird wenn vom Fenster die Größe verändert wird.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void game_Resize(object sender, EventArgs e)
+        {
+            GL.Viewport(0, 0, Width, Height);
+        }
+
+        // Methode die aufgerufen wird, wenn das Fenster geladen wird.
+        void game_Load(object sender, EventArgs e)
+        {
+            GL.LineWidth(4f);
+            VSync = VSyncMode.On;
+            _Player = new Player();
+            _Barriers = new Barriers();
+            _Background = new Background();
+        }
+
+        #endregion
+
+        #region Draw
+
+        /// <summary>
         /// Methode die für die Darstellung zuständig ist.
         /// </summary>
         /// <param name="sender"></param>
@@ -502,6 +536,10 @@ namespace Game
 
             SwapBuffers();
         }
+
+        #endregion
+
+        #region Update
 
         /// <summary>
         /// Methode die für das aktualisieren der Spiellogic zuständig ist.
@@ -519,7 +557,7 @@ namespace Game
 
         void game_UpdateFrame_Started(object sender, FrameEventArgs e)
         {
-            if (_Barriers.AnyCollision(_Player.A, _Player.B, _Player.C, _Player.D))
+            if (_Barriers.AnyCollision(_Player.X_L, _Player.X_R, _Player.Y_T, _Player.Y_B))
             {
                 this.Close();
                 if (Flabbypird.Highscore.I.MinScore() < _Barriers.Points)
@@ -551,25 +589,7 @@ namespace Game
                 _Barriers.Update();
             }
         }
-            
-        /// <summary>
-        /// Methode welche ausgeführt wird wenn vom Fenster die Größe verändert wird.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void game_Resize(object sender, EventArgs e)
-        {
-            GL.Viewport(0, 0, Width, Height);
-        }
 
-        // Methode die aufgerufen wird, wenn das Fenster geladen wird.
-        void game_Load(object sender, EventArgs e)
-        {
-            GL.LineWidth(4f);
-            VSync = VSyncMode.On;
-            _Player = new Player();
-            _Barriers = new Barriers();
-            _Background = new Background();
-        }
+        #endregion
     }
 }
