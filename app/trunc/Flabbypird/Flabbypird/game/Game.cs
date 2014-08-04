@@ -567,13 +567,9 @@ namespace Game
                 {
                     this.Close();
 
-                    //System.Threading.Thread t = new System.Threading.Thread(
-                    //    new System.Threading.ThreadStart(
-                    //        () => System.Windows.Forms.Application.Run(
-                    //            new Flabbypird.AddHighScoreForm(
-                    //                _Barriers.Points
-                    //                ))));
-                    //t.Start();
+                    System.Windows.Forms.Application.Run(
+                        new Flabbypird.AddHighScoreForm(_Barriers.Points)
+                        );
                 }
                 else
                 {
