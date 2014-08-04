@@ -26,7 +26,7 @@ namespace Flabbypird
 
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
 
-            nameBox.Click += nameBox_Enter;
+            nameBox.KeyDown += nameBox_KeyDown;
             applyButton.Click += applyButton_Click;
         }
 
@@ -37,19 +37,26 @@ namespace Flabbypird
             if (nameBox.Text != "")
                 Highscore.I.Add(nameBox.Text, Score);
 
-            Application.Run(
-                new HighscoreForm(this.Location)
-                );
+            System.Threading.Thread t = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                    () => Application.Run(
+                        new HighscoreForm(this.Location)
+                )));
+            t.Start();
+
         }
 
-        void nameBox_Enter(object sender, EventArgs e)
+        void nameBox_KeyDown(object sender, KeyEventArgs e)
         {
-            this.Close();
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.Close();
 
-            if (nameBox.Text != "")
-                Highscore.I.Add(nameBox.Text, Score);
+                if (nameBox.Text != "")
+                    Highscore.I.Add(nameBox.Text, Score);
 
-            new Game.Window();
+                new Game.Window();
+            }
         }
     }
 }

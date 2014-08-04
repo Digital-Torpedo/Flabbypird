@@ -102,15 +102,6 @@ namespace Game
 
             GL.Ortho(0, Screen.Width, Screen.Height, 0, -1, 1);
 
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.PushMatrix();
-            GL.LoadIdentity();
-
-            GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-
-            GL.Disable(EnableCap.Lighting);
-
             GL.Enable(EnableCap.Texture2D);
 
             GL.BindTexture(TextureTarget.Texture2D, ID);
@@ -130,14 +121,7 @@ namespace Game
             GL.Vertex3(x4, y4, 0);
 
             GL.End();
-
             GL.Disable(EnableCap.Texture2D);
-            GL.PopMatrix();
-
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.PopMatrix();
-
-            GL.MatrixMode(MatrixMode.Modelview);
         }
 
         /// <summary>
@@ -155,17 +139,12 @@ namespace Game
 
             GL.Ortho(0, Screen.Width, Screen.Height, 0, -1, 1);
 
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.PushMatrix();
-            GL.LoadIdentity();
-
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             GL.Disable(EnableCap.Lighting);
 
             GL.Enable(EnableCap.Texture2D);
-
             GL.BindTexture(TextureTarget.Texture2D, Image.ID);
 
             GL.Begin(PrimitiveType.Quads);
@@ -183,14 +162,7 @@ namespace Game
             GL.Vertex3(0 + positionX, Image.Height + positionY, 0);
 
             GL.End();
-
             GL.Disable(EnableCap.Texture2D);
-            GL.PopMatrix();
-
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.PopMatrix();
-
-            GL.MatrixMode(MatrixMode.Modelview);
         }
     }
 
@@ -202,6 +174,7 @@ namespace Game
         #region Barriere
         class Barriers
         {
+            
             class Barrier
             {
                 // X Koordinate der Barriere, A ist die Länge der oberen Barriere, C der Unteren
@@ -250,7 +223,7 @@ namespace Game
                 {
                     return
                         (a.Y < A && a.X < _X && b.X > _X) ||
-                        (d.Y > Screen.Height - C/*A + BarrierDistance*/ && d.X < _X && c.X > _X);
+                        (d.Y > Screen.Height - C && d.X < _X && c.X > _X);
                 }
 
                 /// <summary>
@@ -287,16 +260,19 @@ namespace Game
             /// </summary>
             public Barriers()
             {
-                _Barriers = new List<Barrier>();
+                //_Barriers = new List<Barrier>();
+
                 Add();
-                _Barriers.RemoveRange(0, 3);
+                _Barriers = _Barriers.Where((item, index) => index > 2).ToArray();
+                //_Barriers.RemoveRange(0, 3);
             }
 
             // Punkte
             internal int Points = 0;
 
             // Liste der Barrieren
-            List<Barrier> _Barriers;
+            //List<Barrier> _Barriers;
+            Barrier[] _Barriers = new Barrier[0];
 
             // Distanz der Barrieren voneinander
             const int BarrierDistance = 250;
@@ -319,7 +295,10 @@ namespace Game
             /// </summary>
             internal void Update()
             {
-                _Barriers.RemoveAll(x => AddPoint(x.Move(2)));
+                Console.WriteLine(_Barriers.Count());
+                //_Barriers.RemoveAll(x => AddPoint(x.Move(2)));
+                _Barriers = _Barriers.Where(x => !AddPoint(x.Move(2))).ToArray();
+
                 Add();
             }
 
@@ -345,9 +324,23 @@ namespace Game
             /// </summary>
             void Add()
             {
-                do
-                    _Barriers.Add(new Barrier(_Barriers.Count > 0 ? _Barriers.Last().X + BarrierDistance : BarrierDistance));
-                while (_Barriers.Last().X < Screen.Width); 
+                var tempBarriers = new List<Barrier>();
+
+                while (((tempBarriers.Count + _Barriers.Count()) * BarrierDistance) < Screen.Width)
+                    tempBarriers.Add(new Barrier(
+                        tempBarriers.Count > 0 ?
+                            tempBarriers.Last().X + BarrierDistance : (
+                            _Barriers.Count() > 0 ?
+                                _Barriers.Last().X + BarrierDistance :
+                                BarrierDistance)));
+                
+                if (tempBarriers.Count == 0) return;
+
+                //_Barriers = _Barriers + tempBarriers.ToArray();
+                var tempBarriersArray = tempBarriers.ToArray();
+                int aOL = _Barriers.Length;
+                Array.Resize(ref _Barriers, aOL + tempBarriersArray.Length);
+                Array.Copy(tempBarriersArray, 0, _Barriers, aOL, tempBarriersArray.Length);
             }
         }
         #endregion
@@ -439,6 +432,10 @@ namespace Game
 
         bool GameStarted = false;
 
+        // Aufrufe die Sekunde (double)
+        const double UPDATE_MS = 60.0;
+        const double FRAMES_MS = 60.0;
+
         /// <summary>
         /// Initialisierungsmethode.
         /// </summary>
@@ -455,7 +452,7 @@ namespace Game
             Keyboard.KeyDown += Keyboard_KeyDown_StartGame;
             Keyboard.KeyUp += Keyboard_KeyUp;
 
-            Run(60.0, 60.0);
+            Run(UPDATE_MS, FRAMES_MS);
         }
 
         // Sperrt die Leertaste gedrückt Funktion.
@@ -506,10 +503,9 @@ namespace Game
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-                _Background.Draw();
+            _Background.Draw();
             _Barriers.Draw();
             _Player.Draw();
-             
 
             SwapBuffers();
         }
@@ -521,30 +517,46 @@ namespace Game
         /// <param name="e"></param>
         void game_UpdateFrame(object sender, FrameEventArgs e)
         {
-            if (GameStarted)
-                if (_Barriers.AnyCollision(_Player.A, _Player.B, _Player.C, _Player.D))
+            if (Keyboard[Key.Space])
+            {
+                UpdateFrame -= game_UpdateFrame;
+                UpdateFrame += game_UpdateFrame_Started;
+            }
+        }
+
+        void game_UpdateFrame_Started(object sender, FrameEventArgs e)
+        {
+            if (_Barriers.AnyCollision(_Player.A, _Player.B, _Player.C, _Player.D))
+            {
+                this.Close();
+                if (Flabbypird.Highscore.I.MinScore() < _Barriers.Points)
                 {
                     this.Close();
-                    if (Flabbypird.Highscore.I.MinScore() < _Barriers.Points)
-                    {
-                        this.Close();
-                        System.Windows.Forms.Application.Run(
-                            new Flabbypird.AddHighScoreForm(_Barriers.Points)
-                            );
-                    }
-                    else
-                        System.Windows.Forms.Application.Run(
-                            new Flabbypird.AddHighScoreFailedForm()
-                            );
+
+                    //System.Threading.Thread t = new System.Threading.Thread(
+                    //    new System.Threading.ThreadStart(
+                    //        () => System.Windows.Forms.Application.Run(
+                    //            new Flabbypird.AddHighScoreForm(
+                    //                _Barriers.Points
+                    //                ))));
+                    //t.Start();
                 }
                 else
                 {
-                    _Player.Update();
-                    _Barriers.Update();
+                    //System.Threading.Thread t = new System.Threading.Thread(
+                    //    new System.Threading.ThreadStart(
+                    //        () => System.Windows.Forms.Application.Run(
+                    //            new Flabbypird.AddHighScoreFailedForm()
+                    //            )));
+
+                    //t.Join();
                 }
-                        
+            }
             else
-                GameStarted = Keyboard[Key.Space];
+            {
+                _Player.Update();
+                _Barriers.Update();
+            }
         }
             
         /// <summary>

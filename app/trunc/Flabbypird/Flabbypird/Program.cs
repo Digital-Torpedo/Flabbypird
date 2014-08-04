@@ -14,6 +14,8 @@ namespace Flabbypird
         [STAThread]
         static void Main()
         {
+            var g = new Game.Window();
+            return;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainMenuForm());
