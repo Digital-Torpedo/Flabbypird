@@ -25,12 +25,22 @@ namespace Game
         internal static Image Barrier = LoadTexture(@".\images\barrier.bmp");
 
         /// <summary>
+        /// Initialisiert die Images neu.
+        /// </summary>
+        internal static void Initialize()
+        {
+            Flabbypird = LoadTexture(@".\images\flabbypird1.bmp");
+            Background = LoadTexture(@".\images\background.bmp");
+            Barrier = LoadTexture(@".\images\barrier.bmp");        
+        }
+
+        /// <summary>
         /// Lädt eine Textur und gibt das struct Image zurück
         /// </summary>
         /// <param name="path_to_file"></param>
         /// <returns></returns>
         static Image LoadTexture(string path_to_file)
-        {
+         {
             Bitmap bitmap = new Bitmap(path_to_file);
             bitmap.MakeTransparent(Color.Magenta);
             int id;
@@ -212,23 +222,18 @@ namespace Game
                 }
 
                 /// <summary>
-                /// Kollissionsüberprüfung
+                /// Kollissionsabfrage
                 /// </summary>
-                /// <param name="a">Eckpunkt der Spielfigur (x, y)</param>
-                /// <param name="b">Eckpunkt der Spielfigur (x, y)</param>
-                /// <param name="c">Eckpunkt der Spielfigur (x, y)</param>
-                /// <param name="d">Eckpunkt der Spielfigur (x, y)</param>
+                /// <param name="x_l">x links</param>
+                /// <param name="x_r">x rechts</param>
+                /// <param name="y_t">y oben</param>
+                /// <param name="y_b">y unten</param>
                 /// <returns></returns>
                 internal bool Collission(int x_l, int x_r, int y_t, int y_b)
                 {
-                    bool v =
+                    return
                         (y_t < A && x_l < _X && x_r > _X) ||
                         (y_b > Screen.Height - C && x_l < _X && x_r > _X);
-
-                    if (v)
-                        Console.WriteLine();
-
-                    return v;
                 }
 
                 /// <summary>
@@ -352,10 +357,6 @@ namespace Game
         {
             // X Achse und die Vier Koordinaten im Uhrzeigersinn der Spielfigur (x & y).
             static int X = Convert.ToInt16(Screen.Width / 3.0);
-            //public Point A = new Point(X - ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) - ImageStore.Flabbypird.Height / 2);
-            //public Point B = new Point(X + ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) - ImageStore.Flabbypird.Height / 2);
-            //public Point C = new Point(X + ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) + ImageStore.Flabbypird.Height / 2);
-            //public Point D = new Point(X - ImageStore.Flabbypird.Width / 2, Convert.ToInt16(Screen.Height / 2) + ImageStore.Flabbypird.Height / 2);
 
             public int X_L = X - ImageStore.Flabbypird.Width / 2;
             public int X_R = X + ImageStore.Flabbypird.Width / 2;
@@ -373,7 +374,7 @@ namespace Game
             }
 
             // Gravitation Hoch wenn man die Leertaste drückt, und automatische Fallgravitation.
-            const double GravitationUp = 120.0 / 60;
+            const double GravitationUp = 140.0 / 60;
             const double GravitationDown = 4.0 / 60;
             double FallSpeed = 0.0;
 
@@ -444,6 +445,8 @@ namespace Game
         /// </summary>
         public Window() : base(Convert.ToInt16(Screen.Width), Convert.ToInt16(Screen.Height))
         {
+            ImageStore.Initialize();
+
             Title = "Flabbypird";
 
             Load += game_Load;
