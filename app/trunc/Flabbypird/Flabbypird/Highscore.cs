@@ -38,23 +38,25 @@ namespace Flabbypird
 
         List<Player> PlayerScore = new List<Player>();
 
-        public Highscore(string path = @".\highscore\xml.xml")
+        public Highscore(string path = @".\highscore.xml")
         {
-            var serializer = new XmlSerializer(typeof(Player));
+            var serializer = new XmlSerializer(typeof(Player[]));
 
             bool fileExist = File.Exists(path);
             var FileStream = new FileStream(@".\highscore.xml", FileMode.OpenOrCreate);
-
+            
             if (fileExist)
-                PlayerScore = (serializer.Deserialize(FileStream) as Player[]).ToList();
-
+                PlayerScore = new FileInfo(@".\highscore.xml").Length == 0 ?
+                    new List<Player>() :
+                    (serializer.Deserialize(FileStream) as Player[]).ToList();
+            
             FileStream.Close();
         }
 
         public int MinScore()
         {
             return PlayerScore.Count > 0 ?
-                PlayerScore.Last().Score :
+                (PlayerScore.Count >= HIGHSCORE_LIMIT ? PlayerScore.Last().Score : 0) :
                 0;
         }
 
@@ -77,7 +79,7 @@ namespace Flabbypird
 
         void Sort()
         {
-            PlayerScore.OrderBy(player => player.Score).Take(HIGHSCORE_LIMIT).ToArray();
+            PlayerScore = PlayerScore.OrderBy(player => player.Score).Take(HIGHSCORE_LIMIT).ToList();
         }
 
         public string All()
