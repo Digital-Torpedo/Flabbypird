@@ -260,18 +260,14 @@ namespace Game
             /// </summary>
             public Barriers()
             {
-                //_Barriers = new List<Barrier>();
-
                 Add();
                 _Barriers = _Barriers.Where((item, index) => index > 2).ToArray();
-                //_Barriers.RemoveRange(0, 3);
             }
 
             // Punkte
             internal int Points = 0;
 
             // Liste der Barrieren
-            //List<Barrier> _Barriers;
             Barrier[] _Barriers = new Barrier[0];
 
             // Distanz der Barrieren voneinander
@@ -295,8 +291,6 @@ namespace Game
             /// </summary>
             internal void Update()
             {
-                Console.WriteLine(_Barriers.Count());
-                //_Barriers.RemoveAll(x => AddPoint(x.Move(2)));
                 _Barriers = _Barriers.Where(x => !AddPoint(x.Move(2))).ToArray();
 
                 Add();
@@ -336,7 +330,6 @@ namespace Game
                 
                 if (tempBarriers.Count == 0) return;
 
-                //_Barriers = _Barriers + tempBarriers.ToArray();
                 var tempBarriersArray = tempBarriers.ToArray();
                 int aOL = _Barriers.Length;
                 Array.Resize(ref _Barriers, aOL + tempBarriersArray.Length);
